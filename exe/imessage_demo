@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/imessage'
+
+
+options = Imessage::Parser.parse(["--text", "hello mate :P", "--contacts", ""])
+
+sender = Imessage::Sender.new
+sender.deliver({
+  text: options.text,
+  attachment: options.attachment,
+  contacts: options.contacts
+})
